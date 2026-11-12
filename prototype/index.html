@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bay tiếp · Nhóm abc · LAB5 T3</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="engine.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="labbar"><span>LAB5 / T3 · NHÓM ABC</span><span>Prototype mô phỏng · Dữ liệu giả · Không giao dịch thật</span></div>
+  <header><a class="brand" href="index.html" aria-label="Bắt đầu lại prototype">↗ <span>bay tiếp</span></a><span class="header-note">Trợ lý khi chuyến bay thay đổi</span><span class="pill">Đặt chỗ của tôi</span></header>
+  <main>
+    <div class="intro"><p class="eyebrow">HÀ NỘI → TP.HCM / TRV-7Q2K</p><h1>Chuyến bị huỷ.<br>Hành trình vẫn tiếp tục.</h1><p>Cùng tìm chuyến phù hợp cho cả hai hành khách. Bạn quyết định trước khi vé thay đổi.</p></div>
+    <div class="workspace">
+      <aside class="booking">
+        <p class="eyebrow"><b class="mark">1</b> ĐẶT CHỖ & CĂN CỨ</p>
+        <div class="flightline"><strong>HAN</strong><span>→</span><strong>SGN</strong></div>
+        <p>BM 213 · 12/11/2026 · 19:00</p><span class="status danger">Đã huỷ do thời tiết</span>
+        <hr><p class="small-label">HÀNH KHÁCH · 2 NGƯỜI</p><p>Nguyễn Minh An <span class="muted">· 34 tuổi</span></p><p>Nguyễn Gia Bình <span class="muted">· 5 tuổi</span></p>
+        <hr><p class="small-label">QUYỀN LỢI THEO HÃNG BAY MẪU</p>
+        <ul><li>Đổi miễn phí 1 lần trong 48 giờ.</li><li>Hoặc yêu cầu hoàn toàn bộ.</li><li>Không bồi thường tiền mặt do bão.</li></ul>
+        <div class="source">Nguồn: dữ liệu dựng T3<br>Mốc dữ liệu: 15:00 · 12/11/2026<br>Số chỗ trong prototype là mô phỏng.</div>
+        <p id="ticket-status" class="ticket-status">Chưa đổi vé · còn 1 lần đổi miễn phí</p>
+      </aside>
+      <section class="panel" aria-label="Trợ lý và xác nhận">
+        <div id="chat-screen">
+          <div class="panel-head"><div><h2>Trợ lý AI</h2><p>Tra cứu và giữ chỗ; đổi hoặc hoàn cần bạn duyệt.</p></div><span class="online">● Đang hỗ trợ</span></div>
+          <div id="messages" class="messages" role="log" aria-label="Hội thoại" aria-live="polite"></div>
+          <div id="flight-options" class="options" hidden>
+            <div class="section-label"><b class="mark">2</b> Chuyến thay thế · cho cả 2 hành khách</div>
+            <div id="flight-cards"></div>
+          </div>
+          <div id="hold-box" class="hold-box" hidden><div><b class="mark">3</b> <strong id="hold-label"></strong><p>Chưa đổi vé. Hết thời gian, chỗ tự nhả.</p></div><button id="release" class="text-button">Bỏ giữ chỗ</button></div>
+          <div id="next-actions" class="next-actions" hidden><button id="review-change" class="primary">Kiểm tra & xác nhận đổi</button></div>
+          <form id="chat-form"><label for="message-input" class="small-label">BẠN MUỐN ĐƯỢC HỖ TRỢ GÌ?</label><div class="composer"><input id="message-input" maxlength="1000" autocomplete="off" placeholder="Ví dụ: Cho hai mẹ con đi chuyến sớm nhất" required><button class="primary" type="submit">Gửi ↗</button></div></form>
+          <div class="support-row"><button id="refund" class="text-button">Tôi muốn hoàn vé</button><button id="support" class="text-button"><b class="mark">6</b> Gặp nhân viên</button></div>
+        </div>
+        <div id="confirm-screen" hidden>
+          <div class="panel-head"><div><h2 id="confirm-title"></h2><p>Kiểm tra lần cuối trước khi thực hiện.</p></div><b class="mark">4</b></div>
+          <div class="confirm-body"><div id="confirm-summary"></div><div id="confirm-warning" class="warning"></div>
+            <label id="consent-wrap" class="consent"><input type="checkbox" id="consent"><span id="consent-text"></span></label>
+            <div id="confirm-actions" class="button-row"><button id="commit" class="primary" disabled></button><button id="back" class="secondary">Quay lại, chưa thực hiện</button></div>
+            <p id="result" class="result" role="status"></p><button id="result-back" class="secondary" hidden>Về hội thoại</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <details class="demo-controls"><summary>Bàn demo · Ca thử & nhật ký mô phỏng</summary><p>Các nút bên dưới dành cho người trình bày. Không phải chức năng của sản phẩm thật.</p><div class="button-row"><button data-example="Cho hai mẹ con đi chuyến sớm nhất">1. Đi sớm nhất</button><button data-example="Ừ, đổi đi">2. Đồng ý mơ hồ</button><button data-example="Thôi huỷ hết đi, hoàn tiền cho mình">3. Đòi hoàn vé</button><button data-example="Bạn vừa đổi nhầm vé của mình">4. Báo đổi nhầm</button><button id="expire-demo">Giả lập hết 20 phút</button><button id="reset-demo">Bắt đầu lại</button></div><p class="source">Các mốc giờ bay cố định theo đề. Đếm ngược giữ chỗ dùng thời gian thực từ lúc bấm. Nạp lại trang sẽ đặt lại toàn bộ mô phỏng.</p><ol id="tool-log"></ol></details>
+    <footer>Bay Mẫu là hãng dựng. Không liên kết với Traveloka hoặc hãng bay thật. Không nhập thông tin cá nhân thật.</footer>
+  </main>
+</body>
+</html>
