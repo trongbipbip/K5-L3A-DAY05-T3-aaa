@@ -156,11 +156,15 @@ Hai phía cần cân nhắc: khách duyệt giúp nhanh nhưng có thể đọc 
 
 ## §7. Demo
 
-**Kịch bản chuẩn bị (4 phút):**
+**Ca lạ nhận được ở demo:** “Mình muốn đổi sang đi tàu hoả được không?”. Đây là yêu cầu ngoài phạm vi (lớp ③, gần K6/K7): bộ tool chỉ có đổi chuyến bay, không có tàu hoả.
 
-1. 30 giây: giới thiệu đặt chỗ hai người và chuyến huỷ do bão.
-2. 60 giây: gửi “Cho hai mẹ con đi chuyến sớm nhất”; chỉ BM 217 thiếu chỗ, BM 201 đang giữ, đếm ngược và bỏ giữ.
-3. 60 giây: gửi “Ừ, đổi đi”; chỉ màn hình duyệt, checkbox, hai tên và hậu quả; xác nhận đổi hoặc quay lại để demo hoàn.
-4. 45 giây: reset, mở yêu cầu hoàn; chỉ cảnh báo, quay lại chứng minh chưa gửi; sau đó có thể gửi giả và cho thấy không có nút huỷ.
-5. 45 giây: cho người xem đưa ca lạ; nhóm nói/bấm đúng giới hạn và quyền, không hứa ngoài prototype.
+**Prototype đã làm gì:**
 
+- Bộ từ khoá thấy chữ “đổi” nên coi đây là câu “Đổi đi” mơ hồ. Prototype trả lời: “‘Đổi đi’ chưa đủ để xác nhận chính xác chuyến và hành khách. Mình chưa đổi vé…” và hiện danh sách chuyến thay thế.
+- Không gọi `doi_chuyen_bay` hay `gui_yeu_cau_hoan_ve`; không giữ chỗ; không mất lần đổi miễn phí. Cổng duyệt (checkbox + nút xác nhận) vẫn chặn mọi thao tác ghi.
+- Chưa tốt: prototype không nói rõ “không hỗ trợ tàu hoả”, nên khách có thể hiểu nhầm là đang được đổi sang phương tiện khác.
+
+**Nhóm có đổi ý gì sau ca đó không:**
+
+- Không đổi thiết kế an toàn: ca này không gây hại vì bị chặn bởi cổng duyệt, nên mức tự chủ ở §4 và ba tiêu chí ở §6 giữ nguyên.
+- Ca này xác nhận hạn chế đã ghi ở “Lỗi còn lại” (§6): chat dựa từ khoá có thể trả lời lạc ý với câu ngoài phạm vi. Hướng sửa sau lab là thêm luật nhận ra “tàu hoả/xe/khách sạn” để trả lời “ngoài phạm vi, chuyển nhân viên” thay vì mở danh sách chuyến bay.
